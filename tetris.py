@@ -2,12 +2,12 @@
 import random, time, pygame, sys
 from pygame.locals import *
 
-FPS = 25
+FPS = 100
 WINDOWWIDTH = 640
 WINDOWHEIGHT = 480
 BOXSIZE = 20
-BOARDWIDTH = 10
-BOARDHEIGHT = 20
+BOARDWIDTH = 14
+BOARDHEIGHT = 18
 BLANK = '.'
 
 MOVESIDEWAYSFREQ = 0.15
@@ -18,23 +18,16 @@ TOPMARGIN = WINDOWHEIGHT - (BOARDHEIGHT * BOXSIZE) - 5
 
 #               R    G    B
 WHITE       = (255, 255, 255)
-GRAY        = (185, 185, 185)
 BLACK       = (  0,   0,   0)
-RED         = (155,   0,   0)
-LIGHTRED    = (175,  20,  20)
-GREEN       = (  0, 155,   0)
-LIGHTGREEN  = ( 20, 175,  20)
-BLUE        = (  0,   0, 155)
-LIGHTBLUE   = ( 20,  20, 175)
-YELLOW      = (155, 155,   0)
-LIGHTYELLOW = (175, 175,  20)
+LIGHTPINK   = (255, 192, 203)
+DARKPINK    = (255, 20 , 147)
 
-BORDERCOLOR = BLUE
-BGCOLOR = BLACK
+BORDERCOLOR = LIGHTPINK
+BGCOLOR = DARKPINK
 TEXTCOLOR = WHITE
-TEXTSHADOWCOLOR = GRAY
-COLORS      = (     BLUE,      GREEN,      RED,      YELLOW)
-LIGHTCOLORS = (LIGHTBLUE, LIGHTGREEN, LIGHTRED, LIGHTYELLOW)
+TEXTSHADOWCOLOR = LIGHTPINK
+COLORS      = (LIGHTPINK, LIGHTPINK, LIGHTPINK, LIGHTPINK)
+LIGHTCOLORS = (LIGHTPINK, LIGHTPINK, LIGHTPINK, LIGHTPINK)
 assert len(COLORS) == len(LIGHTCOLORS) # each color must have light color
 
 TEMPLATEWIDTH = 5
@@ -156,14 +149,18 @@ def main():
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
-    BIGFONT = pygame.font.Font('freesansbold.ttf', 100)
-    pygame.display.set_caption('Tetris')
+    BASICFONT = pygame.font.Font('shangri.ttf', 18)
+    BIGFONT = pygame.font.Font('shangri.ttf', 100)
+    pygame.display.set_caption('Tetris-yuninah ')
  
-    showTextScreen('Tetris')
+    showTextScreen('TETRIS')
     while True: # game loop
         runGame()
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load('gameover.mp3')
+        pygame.mixer.music.play(0)
         showTextScreen('Game Over')
+
 
 def runGame():
     # setup variables for the start of the game
@@ -171,7 +168,7 @@ def runGame():
     lastMoveDownTime = time.time()
     lastMoveSidewaysTime = time.time()
     lastFallTime = time.time()
-    movingDown = False # note: there is no movingUp variable
+    movingDown = False # note: there is no movingUp var iable
     movingLeft = False
     movingRight = False
     score = 0
@@ -179,6 +176,8 @@ def runGame():
 
     fallingPiece = getNewPiece()
     nextPiece = getNewPiece()
+    pygame.mixer.music.load('bgm.mp3')
+    pygame.mixer.music.play(-1)
 
     while True: # game loop
         if fallingPiece == None:
@@ -294,6 +293,7 @@ def makeTextObjs(text, font, color):
 
 
 def terminate():
+
     pygame.quit()
     sys.exit()
 
@@ -324,7 +324,7 @@ def showTextScreen(text):
     DISPLAYSURF.blit(titleSurf, titleRect)
 
     # Draw the additional "Press a key to play." text.
-    pressKeySurf, pressKeyRect = makeTextObjs('Press a key to play.', BASICFONT, TEXTCOLOR)
+    pressKeySurf, pressKeyRect = makeTextObjs('press a key!!!!', BASICFONT, TEXTCOLOR)
     pressKeyRect.center = (int(WINDOWWIDTH / 2), int(WINDOWHEIGHT / 2) + 100)
     DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
 
@@ -456,16 +456,16 @@ def drawBoard(board):
 
 def drawStatus(score, level):
     # draw the score text
-    scoreSurf = BASICFONT.render('Score: %s' % score, True, TEXTCOLOR)
+    scoreSurf = BASICFONT.render('SCORE: %s' % score, True, TEXTCOLOR)
     scoreRect = scoreSurf.get_rect()
     scoreRect.topleft = (WINDOWWIDTH - 150, 20)
-    
+    DISPLAYSURF.blit(scoreSurf, scoreRect)
 
     # draw the level text
-    levelSurf = BASICFONT.render('Level: %s' % level, True, TEXTCOLOR)
+    levelSurf = BASICFONT.render('LEVEL: %s' % level, True, TEXTCOLOR)
     levelRect = levelSurf.get_rect()
     levelRect.topleft = (WINDOWWIDTH - 150, 50)
-   
+    DISPLAYSURF.blit(levelSurf, levelRect)
 
 
 def drawPiece(piece, pixelx=None, pixely=None):
@@ -483,10 +483,12 @@ def drawPiece(piece, pixelx=None, pixely=None):
 
 def drawNextPiece(piece):
     # draw the "next" text
-    nextSurf = BASICFONT.render('Next:', True, TEXTCOLOR)
+    nextSurf = BASICFONT.render('NEXT:', True, TEXTCOLOR)
     nextRect = nextSurf.get_rect()
-    nextRect.topleft = (WINDOWWIDTH - 120, 80)
-   
+    nextRect.topleft = (WINDOWWIDTH - 150, 80)
+    DISPLAYSURF.blit(nextSurf, nextRect)
+    # draw the "next" piece
+    drawPiece(piece, pixelx=WINDOWWIDTH-120, pixely=100)
     
 
 
