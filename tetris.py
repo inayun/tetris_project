@@ -2,9 +2,9 @@
 import random, time, pygame, sys
 from pygame.locals import *
 
-FPS = 100
+FPS = 10
 WINDOWWIDTH = 640
-WINDOWHEIGHT = 480
+WINDOWHEIGHT = 400
 BOXSIZE = 20
 BOARDWIDTH = 14
 BOARDHEIGHT = 18
@@ -29,6 +29,7 @@ TEXTSHADOWCOLOR = LIGHTPINK
 COLORS      = (LIGHTPINK, LIGHTPINK, LIGHTPINK, LIGHTPINK)
 LIGHTCOLORS = (LIGHTPINK, LIGHTPINK, LIGHTPINK, LIGHTPINK)
 assert len(COLORS) == len(LIGHTCOLORS) # each color must have light color
+img = pygame.image.load('bground.png')
 
 TEMPLATEWIDTH = 5
 TEMPLATEHEIGHT = 5
@@ -44,15 +45,15 @@ S_SHAPE_TEMPLATE = [['.....',
                      '...O.',
                      '.....']]
 
-Z_SHAPE_TEMPLATE = [['.....',
-                     '.....',
-                     '.OO..',
-                     '..OO.',
+H_SHAPE_TEMPLATE = [['.....',
+                     '.O.O.',
+                     '.OOO.',
+                     '.O.O.',
                      '.....'],
                     ['.....',
+                     '.OOO.',
                      '..O..',
-                     '.OO..',
-                     '.O...',
+                     '.OOO.',
                      '.....']]
 
 I_SHAPE_TEMPLATE = [['..O..',
@@ -66,29 +67,29 @@ I_SHAPE_TEMPLATE = [['..O..',
                      '.....',
                      '.....']]
 
-O_SHAPE_TEMPLATE = [['.....',
-                     '.....',
-                     '.OO..',
-                     '.OO..',
+X_SHAPE_TEMPLATE = [['.....',
+                     '..O..',
+                     '.OOO.',
+                     '..O..',
                      '.....']]
 
-J_SHAPE_TEMPLATE = [['.....',
-                     '.O...',
+C_SHAPE_TEMPLATE = [['.....',
+                     '.O.O.',
                      '.OOO.',
                      '.....',
                      '.....'],
                     ['.....',
                      '..OO.',
                      '..O..',
-                     '..O..',
+                     '..OO.',
                      '.....'],
                     ['.....',
                      '.....',
                      '.OOO.',
-                     '...O.',
+                     '.O.O.',
                      '.....'],
                     ['.....',
-                     '..O..',
+                     '.OO..',
                      '..O..',
                      '.OO..',
                      '.....']]
@@ -135,31 +136,32 @@ T_SHAPE_TEMPLATE = [['.....',
                      '..O..',
                      '.....']]
 
+
 PIECES = {'S': S_SHAPE_TEMPLATE,
-          'Z': Z_SHAPE_TEMPLATE,
-          'J': J_SHAPE_TEMPLATE,
+          'H': H_SHAPE_TEMPLATE,
           'L': L_SHAPE_TEMPLATE,
+          'C': C_SHAPE_TEMPLATE,
           'I': I_SHAPE_TEMPLATE,
-          'O': O_SHAPE_TEMPLATE,
-          'T': T_SHAPE_TEMPLATE}
+          'X': X_SHAPE_TEMPLATE,
+          'T': T_SHAPE_TEMPLATE,}
 
 
 def main():
-    global FPSCLOCK, DISPLAYSURF, BASICFONT, BIGFONT
+    global FPSCLOCK, DISPLAYSURF, BASICFONT, BIGFONT, SMALLFONT, DECOFONT
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
     DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-    BASICFONT = pygame.font.Font('shangri.ttf', 18)
+    SMALLFONT = pygame.font.Font('shangri.ttf', 18)
+    BASICFONT = pygame.font.Font('shangri.ttf', 25)
     BIGFONT = pygame.font.Font('shangri.ttf', 100)
+    DECOFONT = pygame.font.Font('1942font.ttf', 20)
     pygame.display.set_caption('Tetris-yuninah ')
  
-    showTextScreen('TETRIS')
+    
     while True: # game loop
         runGame()
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load('gameover.mp3')
-        pygame.mixer.music.play(0)
-        showTextScreen('Game Over')
+       
+
 
 
 def runGame():
@@ -168,25 +170,33 @@ def runGame():
     lastMoveDownTime = time.time()
     lastMoveSidewaysTime = time.time()
     lastFallTime = time.time()
-    movingDown = False # note: there is no movingUp var iable
+    movingDown = False # note: there is no movingUp variable
     movingLeft = False
     movingRight = False
     score = 0
     level, fallFreq = calculateLevelAndFallFreq(score)
 
+    
+
     fallingPiece = getNewPiece()
     nextPiece = getNewPiece()
+
     pygame.mixer.music.load('bgm.mp3')
     pygame.mixer.music.play(-1)
 
     while True: # game loop
         if fallingPiece == None:
             # No falling piece in play, so start a new piece at the top
+
             fallingPiece = nextPiece
             nextPiece = getNewPiece()
             lastFallTime = time.time() # reset lastFallTime
 
             if not isValidPosition(board, fallingPiece):
+                DISPLAYSURF.blit(img,(0,0))
+                showTextScreen('Game Over','R    E    S    T    A    R    T','gameover.mp3')
+                pygame.mixer.music.load('bgm.mp3')
+                pygame.mixer.music.play(-1)
                 return # can't fit a new piece on the board, so game over
 
         checkForQuit()
@@ -194,10 +204,10 @@ def runGame():
             if event.type == KEYUP:
                 if (event.key == K_p):
                     # Pausing the game
-                    DISPLAYSURF.fill(BGCOLOR)
-                   
-                    showTextScreen('Paused') # pause until a key press
-             
+                    # pause until a key press
+                    showTextScreen('Paused','R    E    S    T    A    R    T','pause.mp3') 
+                    pygame.mixer.music.load('bgm.mp3')
+                    pygame.mixer.music.play(-1)
                     lastFallTime = time.time()
                     lastMoveDownTime = time.time()
                     lastMoveSidewaysTime = time.time()
@@ -280,8 +290,20 @@ def runGame():
         drawBoard(board)
         drawStatus(score, level)
         drawNextPiece(nextPiece)
+        drawInfo('per 5 score 1 level up',625,220)
+        drawInfo('pause: p',625,240)
+        drawInfo('rotation: k_up, q, w',625,260)
+        drawInfo('fall: space',625,280)
+        drawInfo('right: k_right, d',625,300)
+        drawInfo('left: k_left, a',625,320)
+        drawInfo('down: k_down, s',625,340)
+        drawDeco('cheer up', 300, 200)
+        drawDeco('stay hard', 420, 300)
+        drawDeco('Dont give up', 440, 120)
+
         if fallingPiece != None:
             drawPiece(fallingPiece)
+
 
         pygame.display.update()
         FPSCLOCK.tick(FPS)
@@ -310,23 +332,30 @@ def checkForKeyPress():
     return None
 
 
-def showTextScreen(text):
+def showTextScreen(title,subTitle,bgm):
     # This function displays large text in the
     # center of the screen until a key is pressed.
     # Draw the text drop shadow
-    titleSurf, titleRect = makeTextObjs(text, BIGFONT, TEXTSHADOWCOLOR)
+
+    # Draw the title shadowed.
+    titleSurf, titleRect = makeTextObjs(title, BIGFONT, TEXTSHADOWCOLOR)
     titleRect.center = (int(WINDOWWIDTH / 2), int(WINDOWHEIGHT / 2))
     DISPLAYSURF.blit(titleSurf, titleRect)
 
-    # Draw the text
-    titleSurf, titleRect = makeTextObjs(text, BIGFONT, TEXTCOLOR)
+    # Draw the title
+    titleSurf, titleRect = makeTextObjs(title, BIGFONT, TEXTCOLOR)
     titleRect.center = (int(WINDOWWIDTH / 2) - 3, int(WINDOWHEIGHT / 2) - 3)
     DISPLAYSURF.blit(titleSurf, titleRect)
 
-    # Draw the additional "Press a key to play." text.
-    pressKeySurf, pressKeyRect = makeTextObjs('press a key!!!!', BASICFONT, TEXTCOLOR)
+    # Draw the subtitle.
+    pressKeySurf, pressKeyRect = makeTextObjs(subTitle, BASICFONT, TEXTCOLOR)
     pressKeyRect.center = (int(WINDOWWIDTH / 2), int(WINDOWHEIGHT / 2) + 100)
     DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
+
+    pygame.mixer.music.stop()
+    pygame.mixer.music.load(bgm)
+    pygame.mixer.music.play(0)
+
 
     while checkForKeyPress() == None:
         pygame.display.update()
@@ -345,7 +374,7 @@ def checkForQuit():
 def calculateLevelAndFallFreq(score):
     # Based on the score, return the level the player is on and
     # how many seconds pass until a falling piece falls one space.
-    level = int(score / 10) + 1
+    level = int(score / 5) + 1
     fallFreq = 0.27 - (level * 0.02)
     return level, fallFreq
 
@@ -405,9 +434,17 @@ def removeCompleteLines(board):
     # Remove any completed lines on the board, move everything above them down, and return the number of complete lines.
     numLinesRemoved = 0
     y = BOARDHEIGHT - 1 # start y at the bottom of the board
+
+    #if the line is completed, show text screen 'good job' only once!!!!!!!!!!!1
+    if isCompleteLine(board, y):
+       showTextScreen('Good Job!','You      got     a      SCORE!!!!','scoreup.mp3')
+       pygame.mixer.music.load('bgm.mp3')
+       pygame.mixer.music.play(-1)
+
     while y >= 0:
         if isCompleteLine(board, y):
             # Remove the line and pull boxes down by one line.
+            
             for pullDownY in range(y, 0, -1):
                 for x in range(BOARDWIDTH):
                     board[x][pullDownY] = board[x][pullDownY-1]
@@ -418,9 +455,12 @@ def removeCompleteLines(board):
             # Note on the next iteration of the loop, y is the same.
             # This is so that if the line that was pulled down is also
             # complete, it will be removed.
+
         else:
             y -= 1 # move on to check next row up
+
     return numLinesRemoved
+
 
 
 def convertToPixelCoords(boxx, boxy):
@@ -456,15 +496,16 @@ def drawBoard(board):
 
 def drawStatus(score, level):
     # draw the score text
+
     scoreSurf = BASICFONT.render('SCORE: %s' % score, True, TEXTCOLOR)
     scoreRect = scoreSurf.get_rect()
-    scoreRect.topleft = (WINDOWWIDTH - 150, 20)
+    scoreRect.topleft = (WINDOWWIDTH - 150, 220)
     DISPLAYSURF.blit(scoreSurf, scoreRect)
 
     # draw the level text
     levelSurf = BASICFONT.render('LEVEL: %s' % level, True, TEXTCOLOR)
     levelRect = levelSurf.get_rect()
-    levelRect.topleft = (WINDOWWIDTH - 150, 50)
+    levelRect.topleft = (WINDOWWIDTH - 150, 250)
     DISPLAYSURF.blit(levelSurf, levelRect)
 
 
@@ -485,12 +526,22 @@ def drawNextPiece(piece):
     # draw the "next" text
     nextSurf = BASICFONT.render('NEXT:', True, TEXTCOLOR)
     nextRect = nextSurf.get_rect()
-    nextRect.topleft = (WINDOWWIDTH - 150, 80)
+    nextRect.topleft = (WINDOWWIDTH - 150, 280)
     DISPLAYSURF.blit(nextSurf, nextRect)
     # draw the "next" piece
-    drawPiece(piece, pixelx=WINDOWWIDTH-120, pixely=100)
-    
+    drawPiece(piece, pixelx=WINDOWWIDTH-120, pixely=300)
 
+def drawInfo(text,x,y):
+    pressKeySurf, pressKeyRect = makeTextObjs(text, SMALLFONT, TEXTCOLOR)
+    pressKeyRect.topleft = (WINDOWWIDTH - x, y)
+    DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
+
+
+def drawDeco(text,x,y):
+    pressKeySurf, pressKeyRect = makeTextObjs(text, DECOFONT, TEXTSHADOWCOLOR)
+    pressKeyRect.topleft = (WINDOWWIDTH - x, y)
+    DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
+    
 
 if __name__ == '__main__':
     main()
