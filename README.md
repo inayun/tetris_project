@@ -2,8 +2,8 @@
 ### 2013049595 윤인아
 ### 테트리미노       
 1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
-'S': S_SHAPE_TEMPLATE     
-'H': H_SHAPE_TEMPLATE      
+'S': S_SHAPE_TEMPLATE   
+'H': H_SHAPE_TEMPLATE   
 'L': L_SHAPE_TEMPLATE       
 'C': C_SHAPE_TEMPLATE        
 'I': I_SHAPE_TEMPLATE      
@@ -73,11 +73,11 @@ pause.mp3
 5.8 위 문구와 함께 배경이미지가 바뀜    
 5.9 효과음(game over.mp3) 재생 
 
-![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)   
-start 화면
-![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)   
-paused 화면
-![score up](https://github.com/inayun/tetris_project/blob/master/start.JPG)   
-score up 
-![game over](https://github.com/inayun/tetris_project/blob/master/start.JPG)   
-game over 화면
+![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
+start 화면    
+![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)     
+paused 화면    
+![score up](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
+score up     
+![game over](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
+game over 화면    
