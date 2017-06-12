@@ -1,7 +1,7 @@
 # tetris_project
 ### 2013049595 윤인아
 ### 테트리미노       
-##### 1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
+1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
 'S': S_SHAPE_TEMPLATE   
 'H': H_SHAPE_TEMPLATE   
 'L': L_SHAPE_TEMPLATE       
@@ -9,8 +9,8 @@
 'I': I_SHAPE_TEMPLATE      
 'X': X_SHAPE_TEMPLATE        
 'T': T_SHAPE_TEMPLATE      
-2. 색깔: 'Light pink' 로 통일
-3. 템플릿 5(넓이) * 5(높이)
+2. 색깔: 'Light pink' 로 통일     
+3. 템플릿 5(넓이) * 5(높이)    
 
 ### 외적요소
 1. 폰트 (4가지)   
