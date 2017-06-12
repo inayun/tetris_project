@@ -1,8 +1,8 @@
 # tetris_project
 ### 2013049595 윤인아
 ### 테트리미노       
-1. 모양의 종류: 7가지    
-'S': S_SHAPE_TEMPLATE     
+1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
+'S': S_SHAPE_TEMPLATE     
 'H': H_SHAPE_TEMPLATE      
 'L': L_SHAPE_TEMPLATE       
 'C': C_SHAPE_TEMPLATE        
@@ -38,7 +38,8 @@ pause.mp3
 5. 문구    
 5.1 게임 오버시  
 5.2 paused 시  
-5.3 line이 완성될때마다  
+5.3 line이 완성될때마다  
+5.4 보더안에 데코용   
 
 ### 기능
 1. 키 조작    
@@ -70,4 +71,13 @@ pause.mp3
 5.6 p키를 누르면 'paused'(title), 'restart'(subtitle) 문구가 나오면서 게임이 일시중단됨    
 5.7 블럭이 보드에 충돌하면 'game over'(title), 'restart'(subtitle) 화면이 나오면서 게임 중단    
 5.8 위 문구와 함께 배경이미지가 바뀜    
-5.9 효과음(game over.mp3) 재생    
+5.9 효과음(game over.mp3) 재생 
+
+![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)   
+start 화면
+![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)   
+paused 화면
+![score up](https://github.com/inayun/tetris_project/blob/master/start.JPG)   
+score up 
+![game over](https://github.com/inayun/tetris_project/blob/master/start.JPG)   
+game over 화면
