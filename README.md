@@ -76,8 +76,8 @@ pause.mp3
 ![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
 start 화면    
 ![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)     
-paused 화면    
-![score up](https://github.com/inayun/tetris_project/blob/master/scoreup.JPG)     
-score up     
-![game over](https://github.com/inayun/tetris_project/blob/master/gameover.JPG)     
+paused 화면     
+![score up](https://github.com/inayun/tetris_project/blob/master/scoreup.JPG)      
+score up      
+![game over](https://github.com/inayun/tetris_project/blob/master/gameover.JPG)      
 game over 화면    
