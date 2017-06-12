@@ -25,7 +25,7 @@ LIGHTPINK   = (255, 192, 203)
 DARKPINK    = (255, 20 , 147)    
 3. 음악 (3가지)  
 bgm.mp3   
-gameover.mp3   
+gameover.mp3     
 pause.mp3    
 4. 화면 구성    
 창 넓이 = 640px  
@@ -38,8 +38,8 @@ pause.mp3
 5. 문구    
 5.1 게임 오버시  
 5.2 paused 시  
-5.3 line이 완성될때마다  
-5.4 보더안에 데코용   
+5.3 line이 완성될때마다     
+5.4 보더안에 데코용    
 
 ### 기능
 1. 키 조작    
@@ -77,7 +77,7 @@ pause.mp3
 start 화면    
 ![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)     
 paused 화면    
-![score up](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
+![score up](https://github.com/inayun/tetris_project/blob/master/scoreup.JPG)     
 score up     
-![game over](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
+![game over](https://github.com/inayun/tetris_project/blob/master/gameover.JPG)     
 game over 화면    
