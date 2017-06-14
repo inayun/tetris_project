@@ -24,7 +24,7 @@ WHITE       = (255, 255, 255)
 BLACK       = (  0,   0,   0)    
 LIGHTPINK   = (255, 192, 203)   
 DARKPINK    = (255, 20 , 147)    
-3. 음악 (3가지)  
+3. 음악 (3가지)   
 bgm.mp3   
 gameover.mp3     
 pause.mp3    
@@ -33,11 +33,11 @@ pause.mp3
 창 높이 = 400px  
 보드 넓이 = 14px  
 보드 높이 = 18px  
-보드 오른편 = score, level, next 정보  
-보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보  
-보드 안쪽 = deco문구   
-![leftside](https://github.com/inayun/tetris_project/blob/master/info.PNG)   
+보드 오른편 = score, level, next 정보
 ![rightside](https://github.com/inayun/tetris_project/blob/master/info2.PNG)    
+보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보  
+![leftside](https://github.com/inayun/tetris_project/blob/master/info.PNG)   
+보드 안쪽 = deco문구   
 5. 문구    
 5.1 게임 오버시  
 5.2 paused 시  
