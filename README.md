@@ -40,7 +40,7 @@ pause.mp3
 보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보    
 ![leftside](https://github.com/inayun/tetris_project/blob/master/info.PNG)     
 보드 안쪽 = deco문구     
-5. 문구    
+5. 문구      
 5.1 게임 오버시  
 5.2 paused 시  
 5.3 line이 완성될때마다     
@@ -78,7 +78,8 @@ pause.mp3
 5.8 위 문구와 함께 배경이미지가 바뀜    
 5.9 효과음(game over.mp3) 재생 
 
-![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
+6. 화면 캡처   
+![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
 start 화면    
 ![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)     
 paused 화면     
