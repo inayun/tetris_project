@@ -1,5 +1,7 @@
 # tetris_project
 ### 2013049595 윤인아
+소개 : 기본 테트리미노를 변형한 "핑크트리스" 파이선게임
+
 ### 테트리미노       
 1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
 ![tetrimino](https://github.com/inayun/tetris_project/blob/master/tetriminoLabeled.jpg)    
