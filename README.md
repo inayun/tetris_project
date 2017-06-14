@@ -78,7 +78,7 @@ pause.mp3
 5.8 위 문구와 함께 배경이미지가 바뀜    
 5.9 효과음(game over.mp3) 재생 
 
-6. 화면 캡처   
+### 화면 캡처   
 ![start](https://github.com/inayun/tetris_project/blob/master/start.JPG)     
 start 화면    
 ![paused](https://github.com/inayun/tetris_project/blob/master/paused.JPG)     
