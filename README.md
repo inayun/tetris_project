@@ -33,10 +33,10 @@ pause.mp3
 창 높이 = 400px  
 보드 넓이 = 14px  
 보드 높이 = 18px  
-보드 오른편 = score, level, next 정보
-![rightside](https://github.com/inayun/tetris_project/blob/master/info2.PNG)    
-보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보  
-![leftside](https://github.com/inayun/tetris_project/blob/master/info.PNG)   
+보드 오른편 = score, level, next 정보    
+![rightside](https://github.com/inayun/tetris_project/blob/master/info2.PNG)      
+보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보    
+![leftside](https://github.com/inayun/tetris_project/blob/master/info.PNG)     
 보드 안쪽 = deco문구   
 5. 문구    
 5.1 게임 오버시  
