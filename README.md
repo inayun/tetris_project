@@ -36,8 +36,8 @@ pause.mp3
 보드 오른편 = score, level, next 정보  
 보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보  
 보드 안쪽 = deco문구   
-![leftside](https://github.com/inayun/tetris_project/blob/master/info.png)   
-![rightside](https://github.com/inayun/tetris_project/blob/master/info2.png)    
+![leftside](https://github.com/inayun/tetris_project/blob/master/info.PNG)   
+![rightside](https://github.com/inayun/tetris_project/blob/master/info2.PNG)    
 5. 문구    
 5.1 게임 오버시  
 5.2 paused 시  
