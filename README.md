@@ -2,8 +2,8 @@
 ### 2013049595 윤인아
 ### 테트리미노       
 1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
-![tetrimino](https://github.com/inayun/tetris_project/blob/master/tetriminoLabeled.JPG)    
-'S': S_SHAPE_TEMPLATE   
+![tetrimino](https://github.com/inayun/tetris_project/blob/master/tetriminoLabeled.jpg)       
+'S': S_SHAPE_TEMPLATE    
 'H': H_SHAPE_TEMPLATE   
 'L': L_SHAPE_TEMPLATE       
 'C': C_SHAPE_TEMPLATE        
