@@ -1,8 +1,9 @@
 # tetris_project
 ### 2013049595 윤인아
 ### 테트리미노       
-1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
-'S': S_SHAPE_TEMPLATE   
+1. 모양의 종류: 7가지(기본 테트리미노 모양을 변형)   
+![tetrimino](https://github.com/inayun/tetris_project/blob/master/tetriminoLabeled.JPG)    
+'S': S_SHAPE_TEMPLATE   
 'H': H_SHAPE_TEMPLATE   
 'L': L_SHAPE_TEMPLATE       
 'C': C_SHAPE_TEMPLATE        
@@ -34,7 +35,8 @@ pause.mp3
 보드 높이 = 18px  
 보드 오른편 = score, level, next 정보  
 보드 왼편 = 키 조작에 대한 정보, 점수 계산 정보  
-보드 안쪽 = deco문구  
+보드 안쪽 = deco문구   
+
 5. 문구    
 5.1 게임 오버시  
 5.2 paused 시  
